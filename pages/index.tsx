@@ -1,6 +1,7 @@
 import Button from "@/components/resuseable/Button";
 import Head from "next/head";
 import styled from "styled-components";
+import { fonts, colors } from "@/styles/styleConstants";
 
 export default function Home() {
   return (
@@ -19,12 +20,16 @@ export default function Home() {
               <div>
                 <HeroCTA>Recruiter?</HeroCTA>
                 <HeroButtonHolder>
-                  <Button isMain={true}>Resume</Button>
-                  <Button isMain={false}>Portfolio</Button>
+                  <Button isMain={true} isDark={true}>
+                    Resume
+                  </Button>
+                  <Button isMain={false} isDark={true}>
+                    Portfolio
+                  </Button>
                 </HeroButtonHolder>
               </div>
             </HeroText>
-            <img src="https://dummyimage.com/500x500" alt="" />
+            <HeroImg src="https://dummyimage.com/500x500" alt="" />
           </HeroElements>
         </Hero>
 
@@ -42,6 +47,11 @@ const Hero = styled.div`
   height: 90vh;
   background-color: white;
 
+  /* background-image: url(""); */
+  background: linear-gradient(rgba(20, 16, 16, 0.6), rgba(20, 16, 16, 0.6)),
+    url("https://www.nasa.gov/sites/default/files/thumbnails/image/main_image_star-forming_region_carina_nircam_final-5mb.jpg");
+  background-size: cover;
+
   box-shadow: 0rem 0.25rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
 
   display: flex;
@@ -51,11 +61,17 @@ const Hero = styled.div`
 
 const HeroElements = styled.div`
   display: flex;
-  gap: 10rem;
+  gap: 8rem;
 `;
 
 const HeroText = styled.div`
-  flex-grow: 1;
+  padding: 0 6rem;
+
+  border-radius: 2rem;
+
+  font-family: ${fonts.sansSerifMain};
+
+  background-color: ${colors.darkWhite};
 
   display: flex;
   justify-content: space-evenly;
@@ -72,6 +88,8 @@ const HeroTitle = styled.div``;
 const HeroCTA = styled.div`
   font-size: 1rem;
   font-weight: 600;
+
+  margin-bottom: 0.5rem;
 `;
 
 const HeroButtonHolder = styled.div`
@@ -79,7 +97,9 @@ const HeroButtonHolder = styled.div`
   gap: 1rem;
 `;
 
-const HeroImg = styled.img``;
+const HeroImg = styled.img`
+  border-radius: 2rem;
+`;
 
 const Title = styled.h1``;
 

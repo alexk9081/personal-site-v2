@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { colors, fonts } from "@/styles/styleConstants";
+import { IconBrandHipchat, IconBrandReact, IconFileDescription, IconHammer } from "@tabler/icons";
 
 export default function Header() {
   const [headerTransparent, setHeaderTransparent] = useState(true);
@@ -32,9 +33,12 @@ export default function Header() {
         <Link href="/">
           <span>Alex Keo</span>
         </Link>
-        <Link href="/">
-          <span>Alex Keo</span>
-        </Link>
+        <span>
+          <IconHammer size={40} />
+          <IconBrandHipchat size={40} />
+          <IconFileDescription size={40} />
+          <IconBrandReact size={40} />
+        </span>
       </UpperHeader>
       <LowerNav
         isHidden={headerTransparent}
@@ -69,21 +73,23 @@ const UpperHeader = styled.header<{ isTransparent: boolean }>`
   padding: 0rem 1rem;
 
   color: ${colors.nearWhite};
-  backdrop-filter: blur(3px);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   transition: 0.3s ease all;
+  backdrop-filter: ${(props: { isTransparent: boolean }) =>
+    props.isTransparent ? "none" : "blur(7px)"};
   background-color: ${(props: { isTransparent: boolean }) =>
     props.isTransparent ? "transparent" : colors.translucentNearBlack};
 
   a {
     color: ${colors.nearWhite};
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2.25rem;
     font-weight: 600;
+    font-family: ${fonts.serifMain};
   }
 `;
 
@@ -96,10 +102,10 @@ const LowerNav = styled.nav`
   justify-content: center;
   align-items: center;
 
-  backdrop-filter: blur(3px);
-
   width: 100%;
   height: 2.5rem; //Needs to be the same as max height below
+
+  backdrop-filter: blur(7px);
 
   transition: 0.3s ease all;
 

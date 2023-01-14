@@ -1,26 +1,27 @@
 import styled from "styled-components";
-import { colors } from "@/styles/styleConstants";
+import { colors, fonts } from "@/styles/styleConstants";
 
 export default styled.button`
   padding: 1rem;
-  border: 4px solid ${colors.translucentLightBlack};
+  border: 4px solid ${(props: { isDark: boolean }) => props.isDark ? colors.translucentLightBlack : colors.translucentDarkWhite};
   
   font-size: 1rem;
   font-weight: 600;
+  font-family: ${fonts.sansSerifMain};
 
   transition: 0.3s ease all;
 
-  background-color: ${(props: { isMain: boolean }) =>
-    props.isMain ? colors.translucentLightBlack : "transparent"};
+  background-color: ${(props: { isMain: boolean, isDark: boolean }) =>
+    props.isMain ? (props.isDark ? colors.translucentLightBlack : colors.translucentDarkWhite ) : "transparent"};
 
-  color: ${(props: { isMain: boolean }) =>
-    props.isMain ? colors.nearWhite : colors.nearBlack};
+  color: ${(props: { isMain: boolean, isDark: boolean }) =>
+    (props.isMain ? !props.isDark : props.isDark) ? colors.nearBlack : colors.nearWhite};
 
   &:hover {
     cursor: pointer;
 
-    color: ${colors.nearWhite};
-    background-color: ${colors.nearBlack};
-    border: 4px solid ${colors.nearBlack};
+    color: ${(props: { isDark: boolean }) => props.isDark ? colors.nearWhite : colors.nearBlack};
+    background-color: ${(props: { isDark: boolean }) => props.isDark ? colors.nearBlack : colors.nearWhite};
+    border: 4px solid ${(props: { isDark: boolean }) => props.isDark ? colors.nearBlack : colors.nearWhite};
   }
 `;
