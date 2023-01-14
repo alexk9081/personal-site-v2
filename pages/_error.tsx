@@ -4,7 +4,15 @@ import styled from "styled-components";
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
-  color: palevioletred;
+`;
+
+const MainPage = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  min-height: 100vh;
 `;
 
 export default function Page404({ statusCode }: any) {
@@ -13,11 +21,12 @@ export default function Page404({ statusCode }: any) {
       <Head>
         <title>Alex Keo</title>
       </Head>
-      <main>
+      <MainPage>
+        <Title>An Error Occured</Title>
         {statusCode
           ? `An error ${statusCode} occurred on server`
           : "An error occurred on client"}
-      </main>
+      </MainPage>
     </>
   );
 }

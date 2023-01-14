@@ -3,8 +3,8 @@ export const colors = {
   lightBlack: "#222",
   nearWhite: "#eee",
 
-  translucentNearBlack: "rgba( 16, 16, 16, 0.9 )",
-  translucentLightBlack: "rgba( 32, 32, 32, 0.9 )",
+  translucentNearBlack: "rgba( 16, 16, 16, 0.97 )",
+  translucentLightBlack: "rgba( 32, 32, 32, 0.97 )",
 }
 
 export const fonts = {
