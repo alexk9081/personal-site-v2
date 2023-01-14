@@ -66,6 +66,7 @@ export default function Header() {
 
 const UpperHeader = styled.header<{ isTransparent: boolean }>`
   position: fixed;
+  z-index: 1;
 
   height: 4rem;
   width: 100%;
@@ -96,6 +97,7 @@ const UpperHeader = styled.header<{ isTransparent: boolean }>`
 const LowerNav = styled.nav`
   position: fixed;
   top: 4rem;
+  z-index: 1;
 
   display: flex;
   gap: 5vw;

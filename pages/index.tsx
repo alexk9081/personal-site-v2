@@ -47,10 +47,10 @@ const Hero = styled.div`
   height: 90vh;
   background-color: white;
 
-  /* background-image: url(""); */
-  background: linear-gradient(rgba(20, 16, 16, 0.6), rgba(20, 16, 16, 0.6)),
+  background: linear-gradient(rgba(20, 16, 16, 0.7), rgba(20, 16, 16, 0.7)),
     url("https://www.nasa.gov/sites/default/files/thumbnails/image/main_image_star-forming_region_carina_nircam_final-5mb.jpg");
   background-size: cover;
+  filter: grayscale(45%);
 
   box-shadow: 0rem 0.25rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
 
