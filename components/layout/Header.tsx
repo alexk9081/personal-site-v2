@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { colors, fonts } from "@/styles/styleConstants";
-import { IconBrandHipchat, IconBrandReact, IconFileDescription, IconHammer } from "@tabler/icons";
+import {
+  IconBrandHipchat,
+  IconBrandReact,
+  IconFileDescription,
+  IconHammer,
+} from "@tabler/icons";
+import { useRouter } from "next/router";
 
 export default function Header() {
   const [headerTransparent, setHeaderTransparent] = useState(true);
@@ -21,6 +27,24 @@ export default function Header() {
     };
   }, [headerTransparent]);
 
+
+  const router = useRouter();
+  const [url, setURL] = useState("");
+
+  useEffect(() => {
+    setURL(router.pathname);
+
+    const handleRouteChange = (url: string, { shallow }: any) => {
+      setURL(url)
+    };
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, []);
+
   return (
     <>
       <UpperHeader
@@ -34,10 +58,10 @@ export default function Header() {
           <span>Alex Keo</span>
         </Link>
         <span>
-          <IconHammer size={40} />
-          <IconBrandHipchat size={40} />
-          <IconFileDescription size={40} />
-          <IconBrandReact size={40} />
+          <IconHammer size={40} strokeWidth={1.25} />
+          <IconBrandHipchat size={40} strokeWidth={1.25} />
+          <IconFileDescription size={40} strokeWidth={1.25} />
+          <IconBrandReact size={40} strokeWidth={1.25} />
         </span>
       </UpperHeader>
       <LowerNav
@@ -47,18 +71,18 @@ export default function Header() {
           if (scrollY < 10) setHeaderTransparent(true);
         }}
       >
-        <Link href="/projects">
+        <StyledLink href="/projects" isUnderlined={url.startsWith("/projects")}>
           <span>Projects</span>
-        </Link>
-        <Link href="/aboutMe">
+        </StyledLink>
+        <StyledLink href="/aboutMe" isUnderlined={url.startsWith("/aboutMe")}>
           <span>About Me</span>
-        </Link>
-        <Link href="/resume">
+        </StyledLink>
+        <StyledLink href="/resume" isUnderlined={url.startsWith("/resume")}>
           <span>Resume</span>
-        </Link>
-        <Link href="/techStack">
+        </StyledLink>
+        <StyledLink href="/techStack" isUnderlined={url.startsWith("/techStack")}>
           <span>Tech Stack</span>
-        </Link>
+        </StyledLink>
       </LowerNav>
     </>
   );
@@ -68,7 +92,7 @@ const UpperHeader = styled.header<{ isTransparent: boolean }>`
   position: fixed;
   z-index: 1;
 
-  height: 4rem;
+  height: 5rem;
   width: 100%;
   box-sizing: border-box;
   padding: 0rem 1rem;
@@ -80,8 +104,13 @@ const UpperHeader = styled.header<{ isTransparent: boolean }>`
   align-items: center;
 
   transition: 0.3s ease all;
+
+  box-shadow: ${(props: { isTransparent: boolean }) =>
+    props.isTransparent ? "none" : "inset 0rem -2rem 1rem -1rem #0004"};
+
   backdrop-filter: ${(props: { isTransparent: boolean }) =>
     props.isTransparent ? "none" : "blur(7px)"};
+
   background-color: ${(props: { isTransparent: boolean }) =>
     props.isTransparent ? "transparent" : colors.translucentNearBlack};
 
@@ -96,7 +125,7 @@ const UpperHeader = styled.header<{ isTransparent: boolean }>`
 
 const LowerNav = styled.nav`
   position: fixed;
-  top: 4rem;
+  top: 5rem;
   z-index: 1;
 
   display: flex;
@@ -111,6 +140,8 @@ const LowerNav = styled.nav`
 
   transition: 0.3s ease all;
 
+  box-shadow: inset 0rem 2rem 0.5rem -1rem #3334;
+
   overflow: hidden;
   max-height: ${(props: { isHidden: boolean }) =>
     props.isHidden
@@ -119,13 +150,19 @@ const LowerNav = styled.nav`
 
   background-color: ${(props: { isHidden: boolean }) =>
     props.isHidden ? "transparent" : colors.translucentLightBlack};
+`;
 
-  a {
-    color: ${colors.nearWhite};
-    text-decoration: none;
+const StyledLink = styled(Link)`
+  color: ${colors.nearWhite};
 
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: ${fonts.sansSerifMain};
-  }
+  text-decoration: none;
+
+  padding-bottom: 2px;
+
+  border-bottom: ${(props: { isUnderlined: boolean }) =>
+    props.isUnderlined ?  `2px solid ${colors.nearWhite}` : "2px solid transparent"};
+
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: ${fonts.sansSerifMain};
 `;
