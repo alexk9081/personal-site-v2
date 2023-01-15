@@ -1,7 +1,9 @@
-import Button from "@/components/resuseable/Button";
 import Head from "next/head";
 import styled from "styled-components";
-import { fonts, colors } from "@/styles/styleConstants";
+import { IconArrowRight } from "@tabler/icons";
+import Hero from "@/components/page/root/Hero";
+import Link from "next/link";
+import { colors, fonts } from "@/styles/styleConstants";
 
 export default function Home() {
   return (
@@ -10,97 +12,96 @@ export default function Home() {
         <title>Alex Keo</title>
       </Head>
       <main>
-        <Hero>
-          <HeroElements>
-            <HeroText>
-              <div>
-                <HeroName>Alex Keo</HeroName>
-                <HeroTitle>Full Stack Software Engineer</HeroTitle>
-              </div>
-              <div>
-                <HeroCTA>Recruiter?</HeroCTA>
-                <HeroButtonHolder>
-                  <Button isMain={true} isDark={true}>
-                    Resume
-                  </Button>
-                  <Button isMain={false} isDark={true}>
-                    Portfolio
-                  </Button>
-                </HeroButtonHolder>
-              </div>
-            </HeroText>
-            <HeroImg src="https://dummyimage.com/500x500" alt="" />
-          </HeroElements>
-        </Hero>
+        <Hero />
 
-        <Title>This is the home page</Title>
-
-        <Info>
-          <img src="https://dummyimage.com/400x400" alt="" />
-        </Info>
+        <QuickNav>
+          <QuickNavElement
+            title="Enim magna"
+            description="Excepteur irure magna anim laborum laborum Lorem officia ex incididunt reprehenderit deserunt."
+            route="/projects"
+          />
+          <QuickNavElement
+            title="Ipsum ut"
+            description="Laboris elit est do qui ad proident laborum irure et duis ea velit."
+            route="/projects"
+          />
+          <QuickNavElement
+            title="Proident cillum"
+            description="Fugiat sint nisi ipsum laboris ipsum voluptate velit consectetur non eiusmod sit deserunt excepteur."
+            route="/projects"
+          />
+          <QuickNavElement
+            title="Non velit ex"
+            description="Fugiat dolor esse cillum nisi consequat minim sint laborum Lorem."
+            route="/projects"
+          />
+        </QuickNav>
       </main>
     </>
   );
 }
 
-const Hero = styled.div`
-  height: 90vh;
-  background-color: white;
+const QuickNav = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  padding: 2rem 4rem;
+  gap: 3rem;
 
-  background: linear-gradient(rgba(20, 16, 16, 0.7), rgba(20, 16, 16, 0.7)),
-    url("https://www.nasa.gov/sites/default/files/thumbnails/image/main_image_star-forming_region_carina_nircam_final-5mb.jpg");
-  background-size: cover;
-  filter: grayscale(45%);
-
-  box-shadow: 0rem 0.25rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  a {
+    text-decoration: none;
+  }
 `;
 
-const HeroElements = styled.div`
-  display: flex;
-  gap: 8rem;
-`;
+function QuickNavElement({
+  title,
+  description,
+  route,
+}: {
+  title: string;
+  description: string;
+  route: string;
+}) {
+  return (
+    <StyledLink href={route}>
+        <RouteTitle>
+          {title}
+          <IconArrowRight />
+        </RouteTitle>
+        <RouteDescription>{description}</RouteDescription>
+    </StyledLink>
+  );
+}
 
-const HeroText = styled.div`
-  padding: 0 6rem;
-
-  border-radius: 2rem;
-
+const StyledLink = styled(Link)`
   font-family: ${fonts.sansSerifMain};
 
-  background-color: ${colors.darkWhite};
+  color: ${colors.nearBlack};
+
+  padding: 1rem;
+  
+  border: 2px solid transparent;
+    border-radius: 1rem;
+
+  transition: 0.1s ease border;
+
+  &:hover {
+  border: 2px solid black;
+  transition: 0.5s ease border;
+  }
+`;
+
+const RouteTitle = styled.div`
+  font-weight: 600;
+  font-size: 1.5rem;
 
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-`;
-
-const HeroName = styled.div`
-  font-weight: 600;
-  font-size: 3rem;
-`;
-
-const HeroTitle = styled.div``;
-
-const HeroCTA = styled.div`
-  font-size: 1rem;
-  font-weight: 600;
+  align-items: center;
+  gap: 0.5rem;
 
   margin-bottom: 0.5rem;
 `;
 
-const HeroButtonHolder = styled.div`
-  display: flex;
-  gap: 1rem;
+const RouteDescription = styled.div`
+  font-size: 1rem;
 `;
-
-const HeroImg = styled.img`
-  border-radius: 2rem;
-`;
-
-const Title = styled.h1``;
-
-const Info = styled.div``;
