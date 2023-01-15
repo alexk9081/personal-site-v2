@@ -3,7 +3,7 @@ import { colors, fonts } from "@/styles/styleConstants";
 
 export default styled.button`
   padding: 1rem;
-  border: 4px solid ${(props: { isDark: boolean }) => props.isDark ? colors.translucentLightBlack : colors.translucentDarkWhite};
+  border: 4px solid ${(props: { isDark: boolean }) => props.isDark ? colors.lightBlack : colors.darkWhite};
   
   font-size: 1rem;
   font-weight: 600;
@@ -12,7 +12,7 @@ export default styled.button`
   transition: 0.3s ease all;
 
   background-color: ${(props: { isMain: boolean, isDark: boolean }) =>
-    props.isMain ? (props.isDark ? colors.translucentLightBlack : colors.translucentDarkWhite ) : "transparent"};
+    props.isMain ? (props.isDark ? colors.lightBlack : colors.darkWhite ) : "transparent"};
 
   color: ${(props: { isMain: boolean, isDark: boolean }) =>
     (props.isMain ? !props.isDark : props.isDark) ? colors.nearBlack : colors.nearWhite};
