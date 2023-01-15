@@ -74,6 +74,17 @@ function QuickNavElement({
   );
 }
 
+const RouteTitle = styled.div`
+  font-weight: 600;
+  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-bottom: 0.5rem;
+`;
+
 const StyledLink = styled(Link)`
   font-family: ${fonts.sansSerifMain};
 
@@ -89,18 +100,15 @@ const StyledLink = styled(Link)`
   &:hover {
     border: 2px solid black;
     transition: 0.5s ease border;
+
+    & svg {
+      transform: translateX(0.25rem);
+    }
   }
-`;
 
-const RouteTitle = styled.div`
-  font-weight: 600;
-  font-size: 1.5rem;
-
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  margin-bottom: 0.5rem;
+  & svg {
+    transition: 0.1s ease all;
+  }
 `;
 
 const RouteDescription = styled.div`
