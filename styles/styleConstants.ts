@@ -3,14 +3,14 @@ export const colors = {
   lightBlack: "#222",
 
   
-  translucentNearBlack: "rgba( 16, 16, 16, 0.9 )",
-  translucentLightBlack: "rgba( 32, 32, 32, 0.9 )",
+  translucentNearBlack: "rgba( 16, 16, 16, 0.95 )",
+  translucentLightBlack: "rgba( 32, 32, 32, 0.95 )",
   
   nearWhite: "#eee",
   darkWhite: "#ddd",
   
-  translucentNearWhite: "rgba( 240, 240, 240, 0.9 )",
-  translucentDarkWhite: "rgba( 224, 224, 224, 0.9 )",
+  translucentNearWhite: "rgba( 240, 240, 240, 0.95 )",
+  translucentDarkWhite: "rgba( 224, 224, 224, 0.95 )",
 }
 
 export const fonts = {

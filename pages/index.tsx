@@ -16,23 +16,24 @@ export default function Home() {
 
         <QuickNav>
           <QuickNavElement
-            title="Enim magna"
-            description="Excepteur irure magna anim laborum laborum Lorem officia ex incididunt reprehenderit deserunt."
+            title="Projects"
+            description="Explore the projects I have developed which showcase my abilities.
+            Take a look at the underlying code that brought these projects to life, including the one you are looking at right now"
             route="/projects"
           />
           <QuickNavElement
-            title="Ipsum ut"
-            description="Laboris elit est do qui ad proident laborum irure et duis ea velit."
+            title="About Me"
+            description="Learn more about me, my path as a software engineer, and my hobbies and interests during my free time."
             route="/projects"
           />
           <QuickNavElement
-            title="Proident cillum"
-            description="Fugiat sint nisi ipsum laboris ipsum voluptate velit consectetur non eiusmod sit deserunt excepteur."
+            title="Resume"
+            description="Take a quick look at my resume or download it to share with other recruiters or human resources."
             route="/projects"
           />
           <QuickNavElement
-            title="Non velit ex"
-            description="Fugiat dolor esse cillum nisi consequat minim sint laborum Lorem."
+            title="Tech Stack"
+            description="Take a look at the tech stack I use and the projects I have developed utilizing them."
             route="/projects"
           />
         </QuickNav>
@@ -64,11 +65,11 @@ function QuickNavElement({
 }) {
   return (
     <StyledLink href={route}>
-        <RouteTitle>
-          {title}
-          <IconArrowRight />
-        </RouteTitle>
-        <RouteDescription>{description}</RouteDescription>
+      <RouteTitle>
+        {title}
+        <IconArrowRight />
+      </RouteTitle>
+      <RouteDescription>{description}</RouteDescription>
     </StyledLink>
   );
 }
@@ -79,15 +80,15 @@ const StyledLink = styled(Link)`
   color: ${colors.nearBlack};
 
   padding: 1rem;
-  
+
   border: 2px solid transparent;
-    border-radius: 1rem;
+  border-radius: 1rem;
 
   transition: 0.1s ease border;
 
   &:hover {
-  border: 2px solid black;
-  transition: 0.5s ease border;
+    border: 2px solid black;
+    transition: 0.5s ease border;
   }
 `;
 
