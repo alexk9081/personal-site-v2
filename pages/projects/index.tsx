@@ -1,4 +1,10 @@
+import Button from "@/components/resuseable/Button";
 import { fonts } from "@/styles/styleConstants";
+import {
+  IconBrandGithub,
+  IconCodeDots,
+  IconSortAscending,
+} from "@tabler/icons";
 import Head from "next/head";
 import styled from "styled-components";
 
@@ -9,7 +15,23 @@ export default function Projects() {
         <title>Projects | Alex Keo</title>
       </Head>
       <main>
-        <Hero></Hero>
+        <Hero>
+          <Button isMain isDark>
+            GitHub
+            <IconBrandGithub />
+          </Button>
+        </Hero>
+
+        <div>
+          Sort
+          <IconSortAscending />
+        </div>
+
+        <div>
+          <div>TItle</div>
+          <div>Desc</div>
+          <IconCodeDots />
+        </div>
 
         <ProjectCardHolder>
           <ProjectCard
@@ -51,6 +73,10 @@ export default function Projects() {
 const Hero = styled.div`
   height: 60vh;
   background-color: #c7dadf;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ProjectCardHolder = styled.div`

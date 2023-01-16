@@ -37,6 +37,21 @@ export default function Home() {
             route="/projects"
           />
         </QuickNav>
+        <QuickInfo>
+          <QuickInfoText>
+            Qui aliquip anim laboris amet irure occaecat eu. Exercitation
+            eiusmod tempor labore do tempor consequat. Irure cillum elit
+            deserunt enim irure cillum laboris cillum voluptate. Non adipisicing
+            pariatur occaecat id veniam deserunt mollit velit officia. Pariatur
+            sunt dolore labore est id non proident aute incididunt.
+          </QuickInfoText>
+          <QuickInfoSelections>
+            <div>Phone</div>
+            <div>Email</div>
+            <QuickInfoSelectionFlag color="wheat">React</QuickInfoSelectionFlag>
+            <QuickInfoSelectionFlag color="cyan">Java</QuickInfoSelectionFlag>
+          </QuickInfoSelections>
+        </QuickInfo>
       </main>
     </>
   );
@@ -48,10 +63,44 @@ const QuickNav = styled.div`
   grid-auto-rows: 1fr;
   padding: 2rem 4rem;
   gap: 3rem;
+`;
 
-  a {
-    text-decoration: none;
-  }
+const QuickInfo = styled.div`
+  display: grid;
+  grid-template-columns: 70% 20%;
+  margin: 1rem;
+
+  justify-content: space-evenly;
+
+  font-family: ${fonts.sansSerifMain};
+`;
+
+const QuickInfoText = styled.div`
+  background-color: darkslategray;
+
+  color: ${colors.nearWhite};
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+`;
+
+const QuickInfoSelections = styled.div`
+  background-color: darkslateblue;
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+`;
+
+const QuickInfoSelectionFlag = styled.span`
+  border: 2px solid ${({ color }: { color: string }) => color};
+  border-radius: 1rem;
+
+  font-size: 0.75rem;
+  color: ${({ color }: { color: string }) => color};
+
+  padding: 0.1rem 0.25rem;
 `;
 
 function QuickNavElement({

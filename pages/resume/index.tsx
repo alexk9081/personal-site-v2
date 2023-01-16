@@ -7,7 +7,7 @@ export default function Resume() {
   return (
     <>
       <Head>
-        <title>Alex Keo</title>
+        <title>Resume | Alex Keo</title>
       </Head>
       <main>
         <Hero>
