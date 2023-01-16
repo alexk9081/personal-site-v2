@@ -2,6 +2,7 @@ import Button from "@/components/resuseable/Button";
 import Head from "next/head";
 import styled from "styled-components";
 import { fonts, colors } from "@/styles/styleConstants";
+import { IconCircle, IconCircleDot, IconCodeDots, IconDots } from "@tabler/icons";
 
 export default function Home() {
   return (
@@ -38,10 +39,64 @@ export default function Home() {
         <Info>
           <img src="https://dummyimage.com/400x400" alt="" />
         </Info>
+
+        <QuickInfo>
+          <QuickInfoText>
+            Qui aliquip anim laboris amet irure occaecat eu. Exercitation
+            eiusmod tempor labore do tempor consequat. Irure cillum elit
+            deserunt enim irure cillum laboris cillum voluptate. Non adipisicing
+            pariatur occaecat id veniam deserunt mollit velit officia. Pariatur
+            sunt dolore labore est id non proident aute incididunt.
+          </QuickInfoText>
+          <QuickInfoSelections>
+            <div>Phone</div>
+            <div>Email</div>
+            <QuickInfoSelectionFlag color="wheat">React</QuickInfoSelectionFlag>
+            <QuickInfoSelectionFlag color="cyan">Java</QuickInfoSelectionFlag>
+          </QuickInfoSelections>
+        </QuickInfo>
       </main>
     </>
   );
 }
+
+const QuickInfo = styled.div`
+  display: grid;
+  grid-template-columns: 70% 20%;
+  margin: 1rem;
+
+  justify-content: space-evenly;
+
+  font-family: ${fonts.sansSerifMain};
+`;
+
+const QuickInfoText = styled.div`
+  background-color: darkslategray;
+
+  color: ${colors.nearWhite};
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+`;
+
+const QuickInfoSelections = styled.div`
+  background-color: darkslateblue;
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+`;
+
+const QuickInfoSelectionFlag = styled.span`
+  border: 2px solid ${({ color }: { color: string }) => color};
+  border-radius: 1rem;
+
+  font-size: 0.75rem;
+  color: ${({ color }: { color: string }) => color};
+
+  padding: 0.1rem 0.25rem;
+`;
 
 const Hero = styled.div`
   height: 90vh;

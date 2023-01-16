@@ -1,3 +1,5 @@
+import Button from "@/components/resuseable/button";
+import { IconBrandLinkedin, IconMail, IconPhone } from "@tabler/icons";
 import Head from "next/head";
 import styled from "styled-components";
 
@@ -8,7 +10,19 @@ export default function AboutMe() {
         <title>About Me | Alex Keo</title>
       </Head>
       <main>
-        <Hero></Hero>
+        <Hero>
+          <Button isDark isMain>
+            LinkedIn <IconBrandLinkedin />
+          </Button>
+          <Button isDark isMain={false}>
+            Email
+            <IconMail/>
+          </Button>
+          <Button isDark isMain={false}>
+            Phone
+            <IconPhone/>
+          </Button>
+        </Hero>
 
         <PageSection>
           <img src="https://dummyimage.com/400x400.gif" alt="" />
@@ -58,6 +72,10 @@ export default function AboutMe() {
 const Hero = styled.div`
   height: 90vh;
   background-color: #adb8bc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const PageSection = styled.div`

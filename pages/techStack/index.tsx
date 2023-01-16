@@ -10,7 +10,7 @@ export default function TechStack() {
   return (
     <>
       <Head>
-        <title>Alex Keo</title>
+        <title>Tech Stack | Alex Keo</title>
       </Head>
       <main>
         <Hero></Hero>
