@@ -10,6 +10,12 @@ export default function Document() {
         href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Merriweather:wght@400;700;900&display=swap"
         rel="stylesheet"
       />
+
+      <link
+        rel="icon"
+        href="./logo.svg"
+        type="image/x-icon"
+      />
       <body>
         <Main />
         <NextScript />

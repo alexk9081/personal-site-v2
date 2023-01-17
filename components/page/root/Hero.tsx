@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { fonts, colors } from "@/styles/styleConstants";
 import Button from "@/components/resuseable/Button";
+import Image from 'next/image'
 
 export default function Hero() {
   return (

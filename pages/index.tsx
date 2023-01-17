@@ -4,6 +4,7 @@ import { IconArrowRight } from "@tabler/icons";
 import Hero from "@/components/page/root/Hero";
 import Link from "next/link";
 import { colors, fonts } from "@/styles/styleConstants";
+import Tag from "@/components/resuseable/Tag";
 
 export default function Home() {
   return (
@@ -48,8 +49,8 @@ export default function Home() {
           <QuickInfoSelections>
             <div>Phone</div>
             <div>Email</div>
-            <QuickInfoSelectionFlag color="wheat">React</QuickInfoSelectionFlag>
-            <QuickInfoSelectionFlag color="cyan">Java</QuickInfoSelectionFlag>
+            <Tag color="wheat">React</Tag>
+            <Tag color="cyan">Java</Tag>
           </QuickInfoSelections>
         </QuickInfo>
       </main>
@@ -88,19 +89,21 @@ const QuickInfoText = styled.div`
 const QuickInfoSelections = styled.div`
   background-color: darkslateblue;
 
+  color: ${colors.nearWhite};
+
   padding: 1rem;
 
   border-radius: 1rem;
 `;
 
-const QuickInfoSelectionFlag = styled.span`
-  border: 2px solid ${({ color }: { color: string }) => color};
-  border-radius: 1rem;
+const Circle = styled.span`
+  display: inline-block;
+  height: 0.75rem;
+  width: 0.75rem;
 
-  font-size: 0.75rem;
-  color: ${({ color }: { color: string }) => color};
+  border-radius: 50%;
 
-  padding: 0.1rem 0.25rem;
+  background-color: ${({ color }: { color: string }) => color};
 `;
 
 function QuickNavElement({
@@ -145,6 +148,8 @@ const StyledLink = styled(Link)`
   border-radius: 1rem;
 
   transition: 0.1s ease border;
+
+  text-decoration: none;
 
   &:hover {
     border: 2px solid black;

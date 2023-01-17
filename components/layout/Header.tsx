@@ -3,7 +3,9 @@ import styled from "styled-components";
 import Link from "next/link";
 import { colors, fonts } from "@/styles/styleConstants";
 import {
+  IconBrandGithub,
   IconBrandHipchat,
+  IconBrandLinkedin,
   IconBrandReact,
   IconFileDescription,
   IconHammer,
@@ -27,7 +29,6 @@ export default function Header() {
     };
   }, [headerTransparent]);
 
-
   const router = useRouter();
   const [url, setURL] = useState("");
 
@@ -35,7 +36,7 @@ export default function Header() {
     setURL(router.pathname);
 
     const handleRouteChange = (url: string, { shallow }: any) => {
-      setURL(url)
+      setURL(url);
     };
 
     router.events.on("routeChangeStart", handleRouteChange);
@@ -58,10 +59,8 @@ export default function Header() {
           <span>Alex Keo</span>
         </Link>
         <span>
-          <IconHammer size={40} strokeWidth={1.25} />
-          <IconBrandHipchat size={40} strokeWidth={1.25} />
-          <IconFileDescription size={40} strokeWidth={1.25} />
-          <IconBrandReact size={40} strokeWidth={1.25} />
+          <IconBrandLinkedin size={40} strokeWidth={2} />
+          <IconBrandGithub size={40} strokeWidth={2} />
         </span>
       </UpperHeader>
       <LowerNav
@@ -80,7 +79,10 @@ export default function Header() {
         <StyledLink href="/resume" isUnderlined={url.startsWith("/resume")}>
           <span>Resume</span>
         </StyledLink>
-        <StyledLink href="/techStack" isUnderlined={url.startsWith("/techStack")}>
+        <StyledLink
+          href="/techStack"
+          isUnderlined={url.startsWith("/techStack")}
+        >
           <span>Tech Stack</span>
         </StyledLink>
       </LowerNav>
@@ -160,7 +162,9 @@ const StyledLink = styled(Link)`
   padding-bottom: 2px;
 
   border-bottom: ${(props: { isUnderlined: boolean }) =>
-    props.isUnderlined ?  `2px solid ${colors.nearWhite}` : "2px solid transparent"};
+    props.isUnderlined
+      ? `2px solid ${colors.nearWhite}`
+      : "2px solid transparent"};
 
   font-size: 1rem;
   font-weight: 600;

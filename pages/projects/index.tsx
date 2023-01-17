@@ -1,4 +1,5 @@
 import Button from "@/components/resuseable/Button";
+import Tag from "@/components/resuseable/Tag";
 import { fonts } from "@/styles/styleConstants";
 import {
   IconBrandGithub,
@@ -38,31 +39,37 @@ export default function Projects() {
             imgSrc="https://dummyimage.com/500x400"
             title="Exercitation Eiusmod"
             description="Pariatur fugiat ut nisi magna excepteur non aliquip mollit Lorem mollit labore."
+            tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
             imgSrc="https://dummyimage.com/500x505"
             title="Title Nisi Est"
             description="Lorem laboris dolore culpa pariatur sit occaecat aliqua nisi proident occaecat incididunt in qui ut."
+            tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
             imgSrc="https://dummyimage.com/500x430"
             title="Laboris Eiusmod"
             description="Consectetur est amet non anim eiusmod pariatur minim non."
+            tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
             imgSrc="https://dummyimage.com/500x530"
             title="Veniam Pariatur"
             description="Veniam commodo nulla nisi tempor deserunt esse ullamco proident occaecat pariatur aliqua sint magna."
+            tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
             imgSrc="https://dummyimage.com/500x505"
             title="Project Eiusmod"
             description="Mollit do nostrud et eiusmod nisi laboris."
+            tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
             imgSrc="https://dummyimage.com/500x430"
             title="Mollit Eiusmod"
             description="Exercitation nisi excepteur dolor laborum nisi."
+            tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
         </ProjectCardHolder>
       </main>
@@ -81,7 +88,7 @@ const Hero = styled.div`
 
 const ProjectCardHolder = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 4rem;
 
   padding: 2rem 4rem;
@@ -91,10 +98,12 @@ function ProjectCard({
   imgSrc,
   title,
   description,
+  tags,
 }: {
   imgSrc: string;
   title: string;
   description: string;
+  tags: React.ReactElement[];
 }) {
   return (
     <Card>
@@ -102,6 +111,7 @@ function ProjectCard({
 
       <CardTitle>{title}</CardTitle>
       <CardDescription>{description}</CardDescription>
+      {tags}
     </Card>
   );
 }
