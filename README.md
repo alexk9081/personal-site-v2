@@ -1,9 +1,3 @@
-<style>
-  .profileImage {
-    width: 300px;
-  }
-</style>
-
 # Alex Keo Personal Website V2
 
 This is a [Next.js](https://nextjs.org/) v12 project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
@@ -24,5 +18,5 @@ This webpage was made using the Next.js web framework, prisma, and
 
 ### Creator
 
-<img src="https://avatars.githubusercontent.com/u/89793763?v=4" class="profileImage" />
+<img src="https://avatars.githubusercontent.com/u/89793763?v=4" style="width:250px"/>
 Alex Keo
