@@ -108,7 +108,7 @@ function ProjectCard({
     <Card>
       <CardImages>
         {imgSrc.map((src) => (
-          <CardImage src={src} alt="" />
+          <CardImage src={src} alt="" key={src}/>
         ))}
       </CardImages>
 
@@ -127,7 +127,25 @@ const Card = styled.div`
 const CardImages = styled.div`
   display: flex;
   gap: 1rem;
+
+  position:relative;
+
+
+  &:after {
+  content:'';
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  display:inline-block;
+  background: linear-gradient(to right, rgba(0,0,0,0) 0%, #ffff 80%); /* W3C */
+}
 `;
+// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+// background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+// background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+// background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+// background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
 
 const CardImage = styled.img`
   /* width: 100%; */
