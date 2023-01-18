@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { IconArrowRight } from "@tabler/icons";
 import Hero from "@/components/page/root/Hero";
 import Link from "next/link";
-import { colors, fonts } from "@/styles/styleConstants";
+import { colors, fonts, screen } from "@/styles/styleConstants";
 import Tag from "@/components/resuseable/Tag";
 
 export default function Home() {
@@ -47,16 +47,53 @@ export default function Home() {
             sunt dolore labore est id non proident aute incididunt.
           </QuickInfoText>
           <QuickInfoSelections>
-            <div>Phone</div>
-            <div>Email</div>
+            <div>
+              <div>Phone</div>
+              <div>Email</div>
+            </div>
+            <div>
+              <div>Github</div>
+              <div>LinkedIn</div>
+            </div>
+
             <Tag color="wheat">React</Tag>
             <Tag color="cyan">Java</Tag>
           </QuickInfoSelections>
         </QuickInfo>
+
+        <QuickProjects>
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+        </QuickProjects>
       </main>
     </>
   );
 }
+
+function ProjectCard() {
+  return (
+    <Card>
+      <h1>Project</h1>
+      <img src="http://fakeimg.pl/300?font=lobster" alt="" />
+    </Card>
+  );
+}
+
+const QuickProjects = styled.div`
+  display: flex;
+  gap: 2.5rem;
+
+  margin: 3rem;
+
+  overflow-x: hidden;
+`;
+const Card = styled.div`
+  background-color: wheat;
+  padding: 1rem;
+  border-radius: 1rem;
+`;
 
 const QuickNav = styled.div`
   display: grid;

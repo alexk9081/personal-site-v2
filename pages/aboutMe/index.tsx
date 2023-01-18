@@ -1,4 +1,4 @@
-import Button from "@/components/resuseable/button";
+import Button from "@/components/resuseable/Button";
 import { IconBrandLinkedin, IconMail, IconPhone } from "@tabler/icons";
 import Head from "next/head";
 import styled from "styled-components";

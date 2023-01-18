@@ -28,45 +28,44 @@ export default function Projects() {
           <IconSortAscending />
         </div>
 
-        <div>
-          <div>TItle</div>
-          <div>Desc</div>
-          <IconCodeDots />
-        </div>
-
         <ProjectCardHolder>
           <ProjectCard
-            imgSrc="https://dummyimage.com/500x400"
+            imgSrc={[
+              "https://dummyimage.com/700x900",
+              "https://dummyimage.com/507x400",
+              "https://dummyimage.com/500x970",
+              "https://dummyimage.com/970x400",
+            ]}
             title="Exercitation Eiusmod"
             description="Pariatur fugiat ut nisi magna excepteur non aliquip mollit Lorem mollit labore."
             tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
-            imgSrc="https://dummyimage.com/500x505"
+            imgSrc={["https://dummyimage.com/500x505"]}
             title="Title Nisi Est"
             description="Lorem laboris dolore culpa pariatur sit occaecat aliqua nisi proident occaecat incididunt in qui ut."
             tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
-            imgSrc="https://dummyimage.com/500x430"
+            imgSrc={["https://dummyimage.com/500x430"]}
             title="Laboris Eiusmod"
             description="Consectetur est amet non anim eiusmod pariatur minim non."
             tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
-            imgSrc="https://dummyimage.com/500x530"
+            imgSrc={["https://dummyimage.com/500x530"]}
             title="Veniam Pariatur"
             description="Veniam commodo nulla nisi tempor deserunt esse ullamco proident occaecat pariatur aliqua sint magna."
             tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
-            imgSrc="https://dummyimage.com/500x505"
+            imgSrc={["https://dummyimage.com/500x505"]}
             title="Project Eiusmod"
             description="Mollit do nostrud et eiusmod nisi laboris."
             tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
           />
           <ProjectCard
-            imgSrc="https://dummyimage.com/500x430"
+            imgSrc={["https://dummyimage.com/500x430"]}
             title="Mollit Eiusmod"
             description="Exercitation nisi excepteur dolor laborum nisi."
             tags={[<Tag color="red">React</Tag>, <Tag color="blue">Java</Tag>]}
@@ -100,26 +99,38 @@ function ProjectCard({
   description,
   tags,
 }: {
-  imgSrc: string;
+  imgSrc: string[];
   title: string;
   description: string;
   tags: React.ReactElement[];
 }) {
   return (
     <Card>
-      <CardImage src={imgSrc} alt="" />
+      <CardImages>
+        {imgSrc.map((src) => (
+          <CardImage src={src} alt="" />
+        ))}
+      </CardImages>
 
       <CardTitle>{title}</CardTitle>
       <CardDescription>{description}</CardDescription>
       {tags}
+      <IconCodeDots />
     </Card>
   );
 }
 
-const Card = styled.div``;
+const Card = styled.div`
+  padding: 2rem;
+`;
+
+const CardImages = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
 
 const CardImage = styled.img`
-  width: 100%;
+  /* width: 100%; */
   height: 300px;
 `;
 

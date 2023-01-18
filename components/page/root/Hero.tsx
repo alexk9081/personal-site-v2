@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { fonts, colors } from "@/styles/styleConstants";
+import { fonts, colors, screen } from "@/styles/styleConstants";
 import Button from "@/components/resuseable/Button";
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -44,15 +44,24 @@ const MainHero = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: ${screen.tablet}) {
+    height: 100vh;
+  }
 `;
 
 const HeroElements = styled.div`
   display: flex;
   gap: 8rem;
+
+  @media (max-width: ${screen.tablet}) {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
 `;
 
 const HeroText = styled.div`
-  padding: 0 6rem;
+  padding: 0rem 6rem;
 
   border-radius: 2rem;
 
@@ -63,20 +72,33 @@ const HeroText = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+
+  @media (max-width: ${screen.tablet}) {
+    padding: 2.5rem;
+  }
 `;
 
 const HeroName = styled.div`
   font-weight: 600;
   font-size: 3rem;
+
+  @media (max-width: ${screen.tablet}) {
+    font-size: 2.5rem;
+  }
 `;
 
-const HeroTitle = styled.div``;
+const HeroTitle = styled.div`
+  @media (max-width: ${screen.tablet}) {
+    font-size: 0.75rem;
+  }
+`;
 
 const HeroCTA = styled.div`
   font-size: 1rem;
   font-weight: 600;
 
   margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 `;
 
 const HeroButtonHolder = styled.div`
@@ -86,4 +108,8 @@ const HeroButtonHolder = styled.div`
 
 const HeroImg = styled.img`
   border-radius: 2rem;
+
+  @media (max-width: ${screen.tablet}) {
+    width: 350px;
+  }
 `;
