@@ -4,11 +4,7 @@ import Link from "next/link";
 import { colors, fonts } from "@/styles/styleConstants";
 import {
   IconBrandGithub,
-  IconBrandHipchat,
   IconBrandLinkedin,
-  IconBrandReact,
-  IconFileDescription,
-  IconHammer,
 } from "@tabler/icons";
 import { useRouter } from "next/router";
 
