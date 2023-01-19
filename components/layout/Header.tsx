@@ -66,18 +66,18 @@ export default function Header() {
           if (scrollY < 10) setHeaderTransparent(true);
         }}
       >
-        <StyledLink href="/projects" isUnderlined={url.startsWith("/projects")}>
+        <StyledLink href="/projects" underlined={url.startsWith("/projects")}>
           <span>Projects</span>
         </StyledLink>
-        <StyledLink href="/aboutMe" isUnderlined={url.startsWith("/aboutMe")}>
+        <StyledLink href="/aboutMe" underlined={url.startsWith("/aboutMe")}>
           <span>About Me</span>
         </StyledLink>
-        <StyledLink href="/resume" isUnderlined={url.startsWith("/resume")}>
+        <StyledLink href="/resume" underlined={url.startsWith("/resume")}>
           <span>Resume</span>
         </StyledLink>
         <StyledLink
           href="/techStack"
-          isUnderlined={url.startsWith("/techStack")}
+          underlined={url.startsWith("/techStack")}
         >
           <span>Tech Stack</span>
         </StyledLink>
@@ -157,8 +157,8 @@ const StyledLink = styled(Link)`
 
   padding-bottom: 2px;
 
-  border-bottom: ${(props: { isUnderlined: boolean }) =>
-    props.isUnderlined
+  border-bottom: ${(props: { underlined: boolean }) =>
+    props.underlined
       ? `2px solid ${colors.nearWhite}`
       : "2px solid transparent"};
 
