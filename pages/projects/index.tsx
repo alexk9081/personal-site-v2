@@ -29,6 +29,10 @@ export default function Projects() {
         </div>
 
         <ProjectCardHolder>
+          <ProjectMiniMapHolder>
+            <ProjectMiniMap>Project Minimap</ProjectMiniMap>
+          </ProjectMiniMapHolder>
+
           <ProjectCard
             imgSrc={[
               "https://dummyimage.com/700x900",
@@ -90,7 +94,9 @@ const ProjectCardHolder = styled.div`
   grid-template-columns: repeat(1, 1fr);
   gap: 4rem;
 
-  padding: 2rem 4rem;
+  margin: 2rem 4rem;
+
+  position: relative;
 `;
 
 function ProjectCard({
@@ -108,7 +114,7 @@ function ProjectCard({
     <Card>
       <CardImages>
         {imgSrc.map((src) => (
-          <CardImage src={src} alt="" key={src}/>
+          <CardImage src={src} alt="" key={src} />
         ))}
       </CardImages>
 
@@ -120,25 +126,61 @@ function ProjectCard({
   );
 }
 
-const Card = styled.div`
+const ProjectMiniMapHolder = styled.div`
+  position: absolute;
+
   padding: 2rem;
+
+  box-sizing: border-box;
+
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+`;
+
+const ProjectMiniMap = styled.div`
+  position: sticky;
+  top: 12.5rem;
+  z-index: 1;
+  float: right;
+
+  width: max-content;
+  padding: 2rem;
+
+  border-radius: 1rem;
+
+  background-color: wheat;
+
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: ${fonts.sansSerifMain};
+`;
+
+const Card = styled.div`
+  margin: 2rem;
 `;
 
 const CardImages = styled.div`
   display: flex;
   gap: 1rem;
 
-  position:relative;
-
+  position: relative;
 
   &:after {
-  content:'';
-  position:absolute;
-  left:0; top:0;
-  width:100%; height:100%;
-  display:inline-block;
-  background: linear-gradient(to right, rgba(0,0,0,0) 0%, #ffff 80%); /* W3C */
-}
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      #ffff 80%
+    ); /* W3C */
+  }
 `;
 // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 // background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
@@ -148,8 +190,9 @@ const CardImages = styled.div`
 // background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
 
 const CardImage = styled.img`
-  /* width: 100%; */
   height: 300px;
+
+  border-radius: 1rem;
 `;
 
 const CardTitle = styled.div`
