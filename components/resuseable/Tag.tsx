@@ -1,19 +1,17 @@
 import { fonts } from "@/styles/styleConstants";
 import styled from "styled-components";
 
-function Tag({
+export default function Tag({
   children,
   color,
-  // size,
-}: {
-  children:  | string;
+}: // size,
+{
+  children: string;
   color: string;
   // size: string;
 }) {
   return <StyledTag color={color}>{children}</StyledTag>;
 }
-
-export default Tag;
 
 const StyledTag = styled.span`
   border: 2px solid ${({ color }: { color: string }) => color};
