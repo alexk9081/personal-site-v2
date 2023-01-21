@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { colors, fonts } from "@/styles/styleConstants";
-import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-} from "@tabler/icons";
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons";
 import { useRouter } from "next/router";
 
 export default function Header() {
@@ -25,6 +22,7 @@ export default function Header() {
     };
   }, [headerTransparent]);
 
+  //Chagne active route to be underlined
   const router = useRouter();
   const [url, setURL] = useState("");
 
@@ -66,21 +64,26 @@ export default function Header() {
           if (scrollY < 10) setHeaderTransparent(true);
         }}
       >
-        <StyledLink href="/projects" underlined={url.startsWith("/projects")}>
-          <span>Projects</span>
-        </StyledLink>
-        <StyledLink href="/aboutMe" underlined={url.startsWith("/aboutMe")}>
-          <span>About Me</span>
-        </StyledLink>
-        <StyledLink href="/resume" underlined={url.startsWith("/resume")}>
-          <span>Resume</span>
-        </StyledLink>
-        <StyledLink
-          href="/techStack"
-          underlined={url.startsWith("/techStack")}
-        >
-          <span>Tech Stack</span>
-        </StyledLink>
+        <Link href="/projects">
+          <StyledLinkText isActive={url.startsWith("/projects")}>
+            Projects
+          </StyledLinkText>
+        </Link>
+        <Link href="/aboutMe">
+          <StyledLinkText isActive={url.startsWith("/aboutMe")}>
+            About Me
+          </StyledLinkText>
+        </Link>
+        <Link href="/resume">
+          <StyledLinkText isActive={url.startsWith("/resume")}>
+            Resume
+          </StyledLinkText>
+        </Link>
+        <Link href="/techStack">
+          <StyledLinkText isActive={url.startsWith("/techStack")}>
+            Tech Stack
+          </StyledLinkText>
+        </Link>
       </LowerNav>
     </>
   );
@@ -150,17 +153,15 @@ const LowerNav = styled.nav`
     props.isHidden ? "transparent" : colors.translucentLightBlack};
 `;
 
-const StyledLink = styled(Link)`
+const StyledLinkText = styled.span`
   color: ${colors.nearWhite};
 
   text-decoration: none;
 
   padding-bottom: 2px;
 
-  border-bottom: ${(props: { underlined: boolean }) =>
-    props.underlined
-      ? `2px solid ${colors.nearWhite}`
-      : "2px solid transparent"};
+  border-bottom: ${(props: { isActive: boolean }) =>
+    props.isActive ? `2px solid ${colors.nearWhite}` : "2px solid transparent"};
 
   font-size: 1rem;
   font-weight: 600;
