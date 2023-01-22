@@ -1,10 +1,11 @@
 import Head from "next/head";
-import styled from "styled-components";
-import { IconArrowRight } from "@tabler/icons";
 import Hero from "@/components/page/root/Hero";
-import Link from "next/link";
-import { colors, fonts, screen } from "@/styles/styleConstants";
-import Tag from "@/components/resuseable/Tag";
+import QuickNavigation from "@/components/page/root/QuickNavigation";
+import QuickPersonalInfo from "@/components/page/root/QuickPersonalInfo";
+import styled from "styled-components";
+import QuickCards from "@/components/page/root/QuickCards";
+import ChangingSectionInfo from "@/components/page/root/ChangingSectionInfo";
+import { fonts } from "@/styles/styleConstants";
 
 export default function Home() {
   return (
@@ -15,193 +16,36 @@ export default function Home() {
       <main>
         <Hero />
 
-        <QuickNav>
-          <QuickNavElement
-            title="Projects"
-            description="Explore the projects I have developed which showcase my abilities.
-            Take a look at the underlying code that brought these projects to life, including the one you are looking at right now"
-            route="/projects"
-          />
-          <QuickNavElement
-            title="About Me"
-            description="Learn more about me, my path as a software engineer, and my hobbies and interests during my free time."
-            route="/projects"
-          />
-          <QuickNavElement
-            title="Resume"
-            description="Take a quick look at my resume or download it to share with other recruiters or human resources."
-            route="/projects"
-          />
-          <QuickNavElement
-            title="Tech Stack"
-            description="Take a look at the tech stack I use and the projects I have developed utilizing them."
-            route="/projects"
-          />
-        </QuickNav>
-        <QuickInfo>
-          <QuickInfoText>
-            Qui aliquip anim laboris amet irure occaecat eu. Exercitation
-            eiusmod tempor labore do tempor consequat. Irure cillum elit
-            deserunt enim irure cillum laboris cillum voluptate. Non adipisicing
-            pariatur occaecat id veniam deserunt mollit velit officia. Pariatur
-            sunt dolore labore est id non proident aute incididunt.
-          </QuickInfoText>
-          <QuickInfoSelections>
-            <div>
-              <div>Phone</div>
-              <div>Email</div>
-            </div>
-            <div>
-              <div>Github</div>
-              <div>LinkedIn</div>
-            </div>
+        <MainContent>
+          <SubHero>
+            <h1>This is the big title</h1>
+            <p> this is the smaller text describing something</p>
+            <img src="http://fakeimg.pl/1000x500?font=museo" alt="" />
+          </SubHero>
 
-            <Tag color="wheat">React</Tag>
-            <Tag color="cyan">Java</Tag>
-          </QuickInfoSelections>
-        </QuickInfo>
+          <QuickPersonalInfo />
 
-        <QuickProjects>
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-        </QuickProjects>
+          <ChangingSectionInfo />
+
+          <QuickNavigation />
+
+          <QuickCards />
+        </MainContent>
       </main>
     </>
   );
 }
 
-function ProjectCard() {
-  return (
-    <Card>
-      <h1>Project</h1>
-      <img src="http://fakeimg.pl/300?font=lobster" alt="" />
-    </Card>
-  );
-}
-
-const QuickProjects = styled.div`
-  display: flex;
-  gap: 2.5rem;
-
-  margin: 3rem;
-
-  overflow-x: hidden;
-`;
-const Card = styled.div`
-  background-color: wheat;
-  padding: 1rem;
-  border-radius: 1rem;
-`;
-
-const QuickNav = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
-  padding: 2rem 4rem;
-  gap: 3rem;
-`;
-
-const QuickInfo = styled.div`
-  display: grid;
-  grid-template-columns: 70% 20%;
-  margin: 1rem;
-
-  justify-content: space-evenly;
-
+const SubHero = styled.div`
   font-family: ${fonts.sansSerifMain};
+  text-align: center;
 `;
 
-const QuickInfoText = styled.div`
-  background-color: darkslategray;
 
-  color: ${colors.nearWhite};
-
-  padding: 1rem;
-
-  border-radius: 1rem;
-`;
-
-const QuickInfoSelections = styled.div`
-  background-color: darkslateblue;
-
-  color: ${colors.nearWhite};
-
-  padding: 1rem;
-
-  border-radius: 1rem;
-`;
-
-const Circle = styled.span`
-  display: inline-block;
-  height: 0.75rem;
-  width: 0.75rem;
-
-  border-radius: 50%;
-
-  background-color: ${({ color }: { color: string }) => color};
-`;
-
-function QuickNavElement({
-  title,
-  description,
-  route,
-}: {
-  title: string;
-  description: string;
-  route: string;
-}) {
-  return (
-    <StyledLink href={route}>
-      <RouteTitle>
-        {title}
-        <IconArrowRight />
-      </RouteTitle>
-      <RouteDescription>{description}</RouteDescription>
-    </StyledLink>
-  );
-}
-
-const RouteTitle = styled.div`
-  font-weight: 600;
-  font-size: 1.5rem;
+const MainContent = styled.div`
+  margin: 4rem;
 
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  margin-bottom: 0.5rem;
-`;
-
-const StyledLink = styled(Link)`
-  font-family: ${fonts.sansSerifMain};
-
-  color: ${colors.nearBlack};
-
-  padding: 1rem;
-
-  border: 2px solid transparent;
-  border-radius: 1rem;
-
-  transition: 0.1s ease border;
-
-  text-decoration: none;
-
-  &:hover {
-    border: 2px solid black;
-    transition: 0.5s ease border;
-
-    & svg {
-      transform: translateX(0.25rem);
-    }
-  }
-
-  & svg {
-    transition: 0.1s ease all;
-  }
-`;
-
-const RouteDescription = styled.div`
-  font-size: 1rem;
+  flex-direction: column;
+  gap: 5rem;
 `;

@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { colors, fonts } from "@/styles/styleConstants";
-import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-} from "@tabler/icons";
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons";
 import { useRouter } from "next/router";
 
 export default function Header() {
@@ -25,6 +22,7 @@ export default function Header() {
     };
   }, [headerTransparent]);
 
+  //Chagne active route to be underlined
   const router = useRouter();
   const [url, setURL] = useState("");
 
@@ -52,43 +50,43 @@ export default function Header() {
         }}
       >
         <Link href="/">
+          <img src="logo.svg" style={{ height: "2.25rem", marginRight: "1rem", boxShadow: "0 0 0.75rem #fff6", borderRadius: "50%" }} />
           <span>Alex Keo</span>
         </Link>
-        <span>
+        <Links>
+          <Routes>
+            <Link href="/projects">
+              <StyledLinkText isActive={url.startsWith("/projects")}>
+                Projects
+              </StyledLinkText>
+            </Link>
+            <Link href="/aboutMe">
+              <StyledLinkText isActive={url.startsWith("/aboutMe")}>
+                About Me
+              </StyledLinkText>
+            </Link>
+            <Link href="/resume">
+              <StyledLinkText isActive={url.startsWith("/resume")}>
+                Resume
+              </StyledLinkText>
+            </Link>
+            <Link href="/techStack">
+              <StyledLinkText isActive={url.startsWith("/techStack")}>
+                Tech Stack
+              </StyledLinkText>
+            </Link>
+          </Routes>
           <IconBrandLinkedin size={40} strokeWidth={2} />
           <IconBrandGithub size={40} strokeWidth={2} />
-        </span>
+        </Links>
       </UpperHeader>
-      <LowerNav
-        isHidden={headerTransparent}
-        onMouseEnter={() => setHeaderTransparent(false)}
-        onMouseLeave={() => {
-          if (scrollY < 10) setHeaderTransparent(true);
-        }}
-      >
-        <StyledLink href="/projects" isUnderlined={url.startsWith("/projects")}>
-          <span>Projects</span>
-        </StyledLink>
-        <StyledLink href="/aboutMe" isUnderlined={url.startsWith("/aboutMe")}>
-          <span>About Me</span>
-        </StyledLink>
-        <StyledLink href="/resume" isUnderlined={url.startsWith("/resume")}>
-          <span>Resume</span>
-        </StyledLink>
-        <StyledLink
-          href="/techStack"
-          isUnderlined={url.startsWith("/techStack")}
-        >
-          <span>Tech Stack</span>
-        </StyledLink>
-      </LowerNav>
     </>
   );
 }
 
 const UpperHeader = styled.header<{ isTransparent: boolean }>`
   position: fixed;
-  z-index: 1;
+  z-index: 99;
 
   height: 5rem;
   width: 100%;
@@ -103,11 +101,8 @@ const UpperHeader = styled.header<{ isTransparent: boolean }>`
 
   transition: 0.3s ease all;
 
-  box-shadow: ${(props: { isTransparent: boolean }) =>
-    props.isTransparent ? "none" : "inset 0rem -2rem 1rem -1rem #0004"};
-
   backdrop-filter: ${(props: { isTransparent: boolean }) =>
-    props.isTransparent ? "none" : "blur(7px)"};
+    props.isTransparent ? "none" : "blur(3px)"};
 
   background-color: ${(props: { isTransparent: boolean }) =>
     props.isTransparent ? "transparent" : colors.translucentNearBlack};
@@ -118,51 +113,41 @@ const UpperHeader = styled.header<{ isTransparent: boolean }>`
     font-size: 2.25rem;
     font-weight: 600;
     font-family: ${fonts.serifMain};
+
+    display: flex;
+    align-items: center;
   }
 `;
 
-const LowerNav = styled.nav`
-  position: fixed;
-  top: 5rem;
-  z-index: 1;
-
+const StyledLinkText = styled.span`
   display: flex;
-  gap: 5vw;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
-  width: 100%;
-  height: 2.5rem; //Needs to be the same as max height below
-
-  backdrop-filter: blur(7px);
-
-  transition: 0.3s ease all;
-
-  box-shadow: inset 0rem 2rem 0.5rem -1rem #3334;
-
-  overflow: hidden;
-  max-height: ${(props: { isHidden: boolean }) =>
-    props.isHidden
-      ? "0rem"
-      : "2.5rem"}; //Change height above after changing max height
-
-  background-color: ${(props: { isHidden: boolean }) =>
-    props.isHidden ? "transparent" : colors.translucentLightBlack};
-`;
-
-const StyledLink = styled(Link)`
   color: ${colors.nearWhite};
 
   text-decoration: none;
 
   padding-bottom: 2px;
 
-  border-bottom: ${(props: { isUnderlined: boolean }) =>
-    props.isUnderlined
-      ? `2px solid ${colors.nearWhite}`
-      : "2px solid transparent"};
+  border-bottom: ${(props: { isActive: boolean }) =>
+    props.isActive ? `2px solid ${colors.nearWhite}` : "2px solid transparent"};
 
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   font-family: ${fonts.sansSerifMain};
+`;
+
+const Routes = styled.span`
+  display: flex;
+
+  gap: 1rem;
+`;
+
+const Links = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
 `;
