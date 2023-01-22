@@ -20,7 +20,13 @@ export default function Resume() {
           </Button>
         </Hero>
 
-        <ResumeImg src='https://dummyimage.com/900x1600' alt=''/>
+        <ResumeImg src="https://dummyimage.com/900x1600" alt="" />
+        <TextResume>
+          <iframe
+            src="http://docs.google.com/gview?url=https://arxiv.org/pdf/2003.07441.pdf&embedded=true"
+            style={{ width: "600px", height: "500px", border: "none" }}
+          ></iframe>
+        </TextResume>
       </main>
     </>
   );
@@ -38,3 +44,5 @@ const Hero = styled.div`
 const ResumeImg = styled.img`
   width: 500px;
 `;
+
+const TextResume = styled.div``;
