@@ -4,6 +4,7 @@ import { fonts } from "@/styles/styleConstants";
 import {
   IconBrandGithub,
   IconCodeDots,
+  IconFilter,
   IconSortAscending,
 } from "@tabler/icons";
 import Head from "next/head";
@@ -24,8 +25,14 @@ export default function Projects() {
         </Hero>
 
         <div>
-          Sort
-          <IconSortAscending />
+          <span>
+            Filter
+            <IconFilter />
+          </span>
+          <span>
+            Sort
+            <IconSortAscending />
+          </span>
         </div>
 
         <ProjectCardHolder>
@@ -108,7 +115,7 @@ function ProjectCard({
     <Card>
       <CardImages>
         {imgSrc.map((src) => (
-          <CardImage src={src} alt="" key={src}/>
+          <CardImage src={src} alt="" key={src} />
         ))}
       </CardImages>
 
@@ -128,17 +135,22 @@ const CardImages = styled.div`
   display: flex;
   gap: 1rem;
 
-  position:relative;
-
+  position: relative;
 
   &:after {
-  content:'';
-  position:absolute;
-  left:0; top:0;
-  width:100%; height:100%;
-  display:inline-block;
-  background: linear-gradient(to right, rgba(0,0,0,0) 0%, #ffff 80%); /* W3C */
-}
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      #ffff 80%
+    ); /* W3C */
+  }
 `;
 // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 // background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
